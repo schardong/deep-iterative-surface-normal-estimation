@@ -1,0 +1,9 @@
+numpy
+sklearn
+--find-links https://download.pytorch.org/whl/torch_stable.html torch==1.6.0+cu101
+--find-links https://download.pytorch.org/whl/torch_stable.html torchvision==0.7.0+cu101
+--find-links https://pytorch-geometric.com/whl/torch-1.6.0.html torch-scatter==latest+cu101
+--find-links https://pytorch-geometric.com/whl/torch-1.6.0.html torch-sparse==latest+cu101
+--find-links https://pytorch-geometric.com/whl/torch-1.6.0.html torch-cluster==latest+cu101
+--find-links https://pytorch-geometric.com/whl/torch-1.6.0.html torch-spline-conv==latest+cu101
+torch-geometric
