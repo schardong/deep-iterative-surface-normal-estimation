@@ -38,6 +38,8 @@ class SphereDataset(InMemoryDataset):
 
         super(SphereDataset, self).__init__(root, None, None, None)
 
+        self.data, self.slices = torch.load(self.processed_paths[0])
+
     @property
     def raw_file_names(self):
         return f"{self.split}_{self.category}.txt"
@@ -48,7 +50,6 @@ class SphereDataset(InMemoryDataset):
 
     def process(self):
         path_file = self.raw_paths
-        print(self.raw_paths)
         with open(path_file[0], "r") as f:
             filenames = f.read().split('\n')[:-1]
 
@@ -59,7 +60,7 @@ class SphereDataset(InMemoryDataset):
             sdf = read_txt_array(osp.join(self.raw_dir, fname + ".sdf"))
 
             data = Data(pos=pos,
-                        x=torch.cat([normals, sdf.reshape(-1, 1)], dim=1),
+                        x=torch.cat([pos, normals], dim=1),
                         y=sdf)
 
             if self.pre_filter is not None and not self.pre_filter(data):
